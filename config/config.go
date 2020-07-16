@@ -16,11 +16,11 @@ func GetMysqlConfig() (db *sql.DB) {
 		panic(fmt.Errorf("Fatal error config file: %s \n", viper_err))
 	}
 
-	server := viper.GetString("database.server")
-	port := viper.GetString("database.port")
-	dbName := viper.GetString("database.dbName")
-	user := viper.GetString("database.user")
-	password := viper.GetString("database.password")
+	server := viper.GetString("auth_database.server")
+	port := viper.GetString("auth_database.port")
+	dbName := viper.GetString("auth_database.dbName")
+	user := viper.GetString("auth_database.user")
+	password := viper.GetString("auth_database.password")
 
 	connectStr := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",user,password,server,port,dbName)
 	fmt.Println("Connection String: ", connectStr)

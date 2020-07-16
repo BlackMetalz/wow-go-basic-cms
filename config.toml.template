@@ -1,7 +1,9 @@
 # filename: config.toml
-[database]
+[auth_database]
 server = "127.0.0.1"
 port = "3306"
 database = "db_name"
 user = "db_user"
 password = "root_pass"
+bnet_accounts_table = "battlenet_accounts"
+account_table = "account"

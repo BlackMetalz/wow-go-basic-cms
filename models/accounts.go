@@ -2,6 +2,7 @@ package models
 
 import (
 	"database/sql"
+	"github.com/spf13/viper"
 	"github.com/wow-go-basic-cms/entities"
 )
 
@@ -10,7 +11,10 @@ type BnetAccountModel struct {
 }
 
 func (bnetAccount BnetAccountModel) GetAllBnetAccount() ([]entities.Bnet_accounts, error) {
-	rows, err := bnetAccount.Db.Query("select id,email,sha_pass_hash from bfa801_battlenet_accounts")
+	// battlenet_accounts
+	bnetAcc := viper.GetString("auth_database.bnet_accounts_table")
+	query_get_bnet_acc := "select id,email,sha_pass_hash from " + bnetAcc
+	rows, err := bnetAccount.Db.Query(query_get_bnet_acc)
 
 	if err != nil {
 		return nil, err
